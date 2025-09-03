@@ -11,68 +11,71 @@ body {
   font-family: 'Playfair Display', serif;
   color: #000;
   text-align: center;
-  min-height: 200vh; 
+  min-height: 100vh; 
   background: linear-gradient(to bottom, #f2d7b5 0%, #f2d7b5 100%);
-  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Secciones */
-section, header, footer {
-  background: rgba(255, 248, 231, 0.9);
+.container {
+  background: rgba(255, 248, 231, 0.95);
   border-radius: 20px;
   padding: 40px 20px;
-  max-width: 900px;
-  margin: 50px auto;
+  max-width: 600px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
 }
 
-section.show, header.show, footer.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Tipografía */
 header h1 { 
   font-family:'Great Vibes', cursive; 
-  font-size:3rem;
-  margin:0; 
+  font-size:4rem;
+  margin:0 0 10px 0; 
 }
 
-header p, section p, section h2, section h3, footer, label, button, #contador, #lista-confirmaciones li {
-  font-family:'Great Vibes', cursive;
-}
-
-/* Contador */
-#contador {
+p, h2, h3, label, button {
+  font-family:'Alex Brush', cursive;
   font-size:1.5rem;
-  font-weight:bold;
-  margin-top:20px;
-  background: rgba(255,255,255,0.4);
-  color: #000;
-  display:inline-block;
-  padding:12px 20px;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  margin:10px 0;
 }
 
-/* Galería */
+/* Contador animado */
+#contador {
+  display:flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.count-box {
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  padding: 20px 15px;
+  min-width: 80px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.count-box:hover {
+  transform: scale(1.1);
+}
+
+.count-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #a67c52;
+}
+
+.count-label {
+  font-size: 1.2rem;
+  margin-top: 5px;
+  color: #000;
+}
+
+/* Imagen */
 .gallery img {
   width:100%; 
   border-radius:20px; 
   box-shadow:0 6px 15px rgba(0,0,0,0.3); 
-  transition: transform 0.4s;
-}
-.gallery img:hover { transform:scale(1.05); }
-
-/* Video responsivo */
-.video-section iframe, section iframe {
-  width:100%;
-  height:250px;
-  border-radius:15px;
-  margin-top:15px;
+  margin-bottom:20px;
 }
 
 /* Formulario */
@@ -80,14 +83,15 @@ form {
   display:flex;
   flex-direction:column;
   gap:10px;
-  max-width:400px;
+  max-width:100%;
   margin:auto;
 }
 input, button {
-  padding:10px;
+  padding:12px;
   border-radius:10px;
   border:1px solid #ccc;
   font-family:'Playfair Display', serif;
+  font-size:1.2rem;
 }
 button {
   background:#a67c52;
@@ -96,96 +100,71 @@ button {
   transition:0.3s;
 }
 button:hover { background:#8c653f; }
-
-/* Control de música */
-#music-control {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#fff;
-  border-radius:50%;
-  padding:10px 15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.3);
-  cursor:pointer;
-  font-size:1.5rem;
-  z-index:1000;
-}
 </style>
-
-<!-- MANIFEST Y SERVICE WORKER -->
-<link rel="manifest" href="manifest.json">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(reg => console.log('Service Worker registrado', reg))
-      .catch(err => console.error('Service Worker error:', err));
-  });
-}
-</script>
 </head>
 <body>
+<div class="container">
 
-<!-- Fondo -->
-<div id="bg"></div>
-
-<section>
-  <h2>J&J💕</h2>
   <div class="gallery">
-    <img src="imagen/JohanJairony.jpeg" alt="Foto de Boda">
+    <img src="JohanJairony.jpeg" alt="Foto de Boda">
   </div>
-  <p style="font-family:'Great Vibes', cursive; font-size:1.5rem;">Siempre Juntos 💍</p>
-</section>
 
-<header class="show">
-  <h1>Johan & Jairony</h1>
-  <p>¡Nos casamos!</p>
-  <p>Con nuestro amor, la bendición de Dios y la compañía de ustedes.</p>
-  <p>Domingo, 14 de Diciembre de 2025 · 3:00 PM</p>
-  <div id="contador">Cargando contador...</div>
-</header>
+  <header>
+    <h1>Johan & Jairony</h1>
+    <p>¡Nos casamos!</p>
+    <p>Con nuestro amor, la bendición de Dios y la compañía de ustedes.</p>
+    <p>Domingo, 14 de Diciembre de 2025 · 3:00 PM</p>
+    <div id="contador">
+      <div class="count-box">
+        <div class="count-number" id="dias">0</div>
+        <div class="count-label">Días</div>
+      </div>
+      <div class="count-box">
+        <div class="count-number" id="horas">0</div>
+        <div class="count-label">Horas</div>
+      </div>
+      <div class="count-box">
+        <div class="count-number" id="minutos">0</div>
+        <div class="count-label">Minutos</div>
+      </div>
+      <div class="count-box">
+        <div class="count-number" id="segundos">0</div>
+        <div class="count-label">Segundos</div>
+      </div>
+    </div>
+  </header>
 
-<section class="video-section">
-  <h2>Un Mensaje Especial</h2>
-  <iframe src="https://www.youtube.com/embed/-E5ovOA9VM8?autoplay=1&mute=1&loop=1&playlist=-E5ovOA9VM8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</section>
+<h2>📍 Ubicación del Evento</h2>
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.123456789012!2d-69.9380!3d18.4861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a7e5b2c3a1d%3A0xabcdef123456!2sSanto%20Domingo!5e0!3m2!1ses!2sdo!4v1693790000000!5m2!1ses!2sdo" 
+  width="100%" 
+  height="300" 
+  style="border:0; border-radius:15px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 
-<section>
-  <h2>Detalles del Evento</h2>
-  <p>📍 Santo Domingo</p>
-  <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
-</section>
+  <section>
+    <h2>Confirmar Asistencia</h2>
+    <form id="rsvp-form">
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" id="email" name="email" placeholder="Tu correo" required>
+      <label>¿Asistirás?</label>
+      <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
+      <label><input type="radio" name="asistencia" value="No" required> No</label>
+      <button type="submit">Confirmar</button>
+    </form>
+    <p id="mensaje-confirmacion"></p>
+  </section>
 
-<section>
-  <h2>Confirmar Asistencia</h2>
-  <form id="rsvp-form">
-    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-    <input type="email" id="email" name="email" placeholder="Tu correo" required>
-    <label>¿Asistirás?</label>
-    <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
-    <label><input type="radio" name="asistencia" value="No" required> No</label>
-    <button type="submit">Confirmar</button>
-  </form>
-  <p id="mensaje-confirmacion"></p>
-  <h3>Lista de Confirmados (Sí)</h3>
-  <ul id="lista-confirmaciones"></ul>
-</section>
+  <section id="contacto">
+    <h3>Contacto de los Novios</h3>
+    <p>📧 Correo: johanyjaironi@email.com</p>
+    <p>📞 Teléfono: +1 809 123 4567</p>
+  </section>
 
-<section id="contacto">
-  <h3>Contacto de los Novios</h3>
-  <p>📧 Correo: johanyjaironi@email.com</p>
-  <p>📞 Teléfono: +1 809 123 4567</p>
-</section>
-
-<footer>
-  Con cariño, Johan & Jaironi · ¡Te esperamos! 💕
-</footer>
-
-<!-- Música -->
-<audio id="bg-music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/09/07/audio_3a0b5f0c3a.mp3" type="audio/mpeg">
-</audio>
-<div id="music-control">🔇</div>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
@@ -204,34 +183,37 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// Música
-const music = document.getElementById('bg-music');
-const control = document.getElementById('music-control');
-let playing = false;
-control.addEventListener('click', () => {
-  if(playing){ music.pause(); playing=false; control.textContent='🔇'; }
-  else { music.play(); playing=true; control.textContent='🎵'; }
-});
-
-// Contador
+// Contador animado
 function actualizarContador() {
-  const evento = new Date("Dec 14, 2025 20:00:00").getTime();
-  const ahora = new Date().getTime();
+  const evento = new Date("Dec 14, 2025 15:00:00"); // 3:00 PM
+  const ahora = new Date();
   const diff = evento - ahora;
-  if(diff<=0){ document.getElementById("contador").textContent="¡Hoy es el gran día! 💍"; return; }
-  const dias = Math.floor(diff/(1000*60*60*24));
-  const horas = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const min = Math.floor((diff%(1000*60*60))/(1000*60));
-  const sec = Math.floor((diff%(1000*60))/1000);
-  document.getElementById("contador").textContent=`${dias}d ${horas}h ${min}m ${sec}s`;
+
+  if(diff <= 0) {
+    document.getElementById("dias").textContent = 0;
+    document.getElementById("horas").textContent = 0;
+    document.getElementById("minutos").textContent = 0;
+    document.getElementById("segundos").textContent = 0;
+    return;
+  }
+
+  const dias = Math.floor(diff / (1000*60*60*24));
+  const horas = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const min = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const sec = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("horas").textContent = horas;
+  document.getElementById("minutos").textContent = min;
+  document.getElementById("segundos").textContent = sec;
 }
-setInterval(actualizarContador,1000);
+
+setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // RSVP
 const form = document.getElementById('rsvp-form');
 const mensaje = document.getElementById('mensaje-confirmacion');
-const lista = document.getElementById('lista-confirmaciones');
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
@@ -251,28 +233,6 @@ form.addEventListener('submit', function(e){
       mensaje.textContent = "Ocurrió un error 😢";
       mensaje.style.color = "red";
     });
-});
-
-// Lista de confirmados
-db.ref('rsvp').orderByChild('asistencia').equalTo('Sí').on('value', snapshot=>{
-  lista.innerHTML="";
-  snapshot.forEach(childSnap=>{
-    const data = childSnap.val();
-    const li = document.createElement("li");
-    li.innerHTML=`<strong>${data.nombre}</strong> (${data.email}) - ${new Date(data.fecha).toLocaleString()}`;
-    lista.appendChild(li);
-  });
-});
-
-// Animación scroll
-const sections = document.querySelectorAll('section, header, footer');
-window.addEventListener('scroll', () => {
-  sections.forEach(sec => {
-    const rect = sec.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      sec.classList.add('show');
-    }
-  });
 });
 </script>
 </body>
