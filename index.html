@@ -4,78 +4,109 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Boda</title>
+
+<!-- Fuentes elegantes -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
-  margin: 0;
   font-family: 'Playfair Display', serif;
-  color: #000;
-  text-align: center;
-  min-height: 100vh; 
   background: linear-gradient(to bottom, #f2d7b5 0%, #f2d7b5 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:10px;
 }
 
+/* Contenedor principal */
 .container {
-  background: rgba(255, 248, 231, 0.95);
+  background: rgba(255,248,231,0.95);
   border-radius: 20px;
-  padding: 40px 20px;
   max-width: 600px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width:100%;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.25);
+  overflow:hidden;
 }
 
-header h1 { 
-  font-family:'Great Vibes', cursive; 
-  font-size:4rem;
-  margin:0 0 10px 0; 
+/* Animaciones de cascada */
+.fade-slide {
+  opacity:0;
+  transform: translateY(50px);
+  animation: fadeSlide 1s forwards;
 }
 
-p, h2, h3, label, button {
-  font-family:'Alex Brush', cursive;
+@keyframes fadeSlide {
+  to { opacity:1; transform: translateY(0);}
+}
+
+/* Delay por elemento */
+.fade-1 { animation-delay: 0.3s; }
+.fade-2 { animation-delay: 0.6s; }
+.fade-3 { animation-delay: 0.9s; }
+.fade-4 { animation-delay: 1.2s; }
+.fade-5 { animation-delay: 1.5s; }
+.fade-6 { animation-delay: 1.8s; }
+.fade-7 { animation-delay: 2.1s; }
+
+/* Foto */
+.gallery img {
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+  transition: transform 0.6s ease;
+}
+.gallery img:hover { transform: scale(1.05); }
+
+/* Títulos y textos */
+header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size:3rem;
+  margin-bottom:10px;
+}
+
+header p {
+  font-family:'Great Vibes', cursive;
   font-size:1.5rem;
-  margin:10px 0;
+  margin-bottom:10px;
 }
 
-/* Contador animado */
+/* Contador dinámico */
 #contador {
   display:flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 30px 0;
+  justify-content:center;
+  gap:10px;
+  margin:20px 0;
 }
-
 .count-box {
   background: rgba(255,255,255,0.6);
-  border-radius: 15px;
-  padding: 20px 15px;
-  min-width: 80px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
+  padding:15px 20px;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  font-family:'Great Vibes', cursive;
+  transition: transform 0.5s;
 }
-.count-box:hover {
-  transform: scale(1.1);
+.count-box span.num {
+  display:block;
+  font-size:2.2rem;
+  font-weight:bold;
 }
-
-.count-number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #a67c52;
-}
-
-.count-label {
-  font-size: 1.2rem;
-  margin-top: 5px;
-  color: #000;
+.count-box span.label {
+  display:block;
+  font-size:1rem;
 }
 
-/* Imagen */
-.gallery img {
-  width:100%; 
-  border-radius:20px; 
-  box-shadow:0 6px 15px rgba(0,0,0,0.3); 
-  margin-bottom:20px;
+/* Mapa animado */
+.map-container {
+  width:100%;
+  height:250px;
+  border-radius:15px;
+  overflow:hidden;
+  margin:20px 0;
 }
 
 /* Formulario */
@@ -83,15 +114,13 @@ form {
   display:flex;
   flex-direction:column;
   gap:10px;
-  max-width:100%;
-  margin:auto;
+  margin-top:20px;
 }
 input, button {
-  padding:12px;
+  padding:10px;
   border-radius:10px;
   border:1px solid #ccc;
   font-family:'Playfair Display', serif;
-  font-size:1.2rem;
 }
 button {
   background:#a67c52;
@@ -100,52 +129,61 @@ button {
   transition:0.3s;
 }
 button:hover { background:#8c653f; }
+
+/* Contacto */
+#contacto p {
+  font-size:1.2rem;
+  margin:5px 0;
+}
+
+/* Responsivo */
+@media(max-width:400px){
+  header h1{font-size:2rem;}
+  header p{font-size:1.2rem;}
+  .count-box span.num{font-size:1.5rem;}
+  .count-box span.label{font-size:0.9rem;}
+}
 </style>
 </head>
 <body>
+
 <div class="container">
 
-  <div class="gallery">
+  <!-- Foto -->
+  <div class="gallery fade-slide fade-1">
     <img src="JohanJairony.jpeg" alt="Foto de Boda">
   </div>
 
-  <header>
+  <!-- Encabezado -->
+  <header class="fade-slide fade-2">
     <h1>Johan & Jairony</h1>
     <p>¡Nos casamos!</p>
     <p>Con nuestro amor, la bendición de Dios y la compañía de ustedes.</p>
     <p>Domingo, 14 de Diciembre de 2025 · 3:00 PM</p>
-    <div id="contador">
-      <div class="count-box">
-        <div class="count-number" id="dias">0</div>
-        <div class="count-label">Días</div>
-      </div>
-      <div class="count-box">
-        <div class="count-number" id="horas">0</div>
-        <div class="count-label">Horas</div>
-      </div>
-      <div class="count-box">
-        <div class="count-number" id="minutos">0</div>
-        <div class="count-label">Minutos</div>
-      </div>
-      <div class="count-box">
-        <div class="count-number" id="segundos">0</div>
-        <div class="count-label">Segundos</div>
-      </div>
-    </div>
   </header>
 
-<h2>📍 Ubicación del Evento</h2>
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.123456789012!2d-69.9380!3d18.4861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a7e5b2c3a1d%3A0xabcdef123456!2sSanto%20Domingo!5e0!3m2!1ses!2sdo!4v1693790000000!5m2!1ses!2sdo" 
-  width="100%" 
-  height="300" 
-  style="border:0; border-radius:15px;" 
-  allowfullscreen="" 
-  loading="lazy" 
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+  <!-- Contador -->
+  <div id="contador" class="fade-slide fade-3">
+    <div class="count-box"><span class="num" id="dias">0</span><span class="label">Días</span></div>
+    <div class="count-box"><span class="num" id="horas">0</span><span class="label">Horas</span></div>
+    <div class="count-box"><span class="num" id="minutos">0</span><span class="label">Minutos</span></div>
+    <div class="count-box"><span class="num" id="segundos">0</span><span class="label">Segundos</span></div>
+  </div>
 
-  <section>
+  <!-- Detalles -->
+  <h2 class="fade-slide fade-4">Detalles del Evento</h2>
+  <p class="fade-slide fade-5">📍 Santo Domingo</p>
+
+  <!-- Mapa -->
+  <div class="map-container fade-slide fade-6">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.1622!2d-69.9402!3d18.4861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf88b3a46f0f27%3A0x0!2zMTjCsDI5JzMyLjAiTiA2OcKwNTYnMDEuMCJX!5e0!3m2!1ses-419!2sdo!4v1693672537483!5m2!1ses-419!2sdo" 
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- Formulario RSVP -->
+  <section class="fade-slide fade-7">
     <h2>Confirmar Asistencia</h2>
     <form id="rsvp-form">
       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
@@ -158,7 +196,8 @@ button:hover { background:#8c653f; }
     <p id="mensaje-confirmacion"></p>
   </section>
 
-  <section id="contacto">
+  <!-- Contacto -->
+  <section id="contacto" class="fade-slide fade-7">
     <h3>Contacto de los Novios</h3>
     <p>📧 Correo: johanyjaironi@email.com</p>
     <p>📞 Teléfono: +1 809 123 4567</p>
@@ -166,11 +205,11 @@ button:hover { background:#8c653f; }
 
 </div>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
 <script>
-// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAhFsnkt8zgptdJZKXLN0itDoA4CQl6sFk",
   authDomain: "invitacion-boda-f7da0.firebaseapp.com",
@@ -184,31 +223,22 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 // Contador animado
-function actualizarContador() {
-  const evento = new Date("Dec 14, 2025 15:00:00"); // 3:00 PM
-  const ahora = new Date();
+function actualizarContador(){
+  const evento = new Date("Dec 14, 2025 15:00:00").getTime();
+  const ahora = new Date().getTime();
   const diff = evento - ahora;
 
-  if(diff <= 0) {
-    document.getElementById("dias").textContent = 0;
-    document.getElementById("horas").textContent = 0;
-    document.getElementById("minutos").textContent = 0;
-    document.getElementById("segundos").textContent = 0;
-    return;
-  }
-
-  const dias = Math.floor(diff / (1000*60*60*24));
-  const horas = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const min = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const sec = Math.floor((diff % (1000*60)) / 1000);
+  const dias = Math.max(Math.floor(diff/(1000*60*60*24)),0);
+  const horas = Math.max(Math.floor((diff%(1000*60*60*24))/(1000*60*60)),0);
+  const min = Math.max(Math.floor((diff%(1000*60*60))/(1000*60)),0);
+  const sec = Math.max(Math.floor((diff%(1000*60))/1000),0);
 
   document.getElementById("dias").textContent = dias;
   document.getElementById("horas").textContent = horas;
   document.getElementById("minutos").textContent = min;
   document.getElementById("segundos").textContent = sec;
 }
-
-setInterval(actualizarContador, 1000);
+setInterval(actualizarContador,1000);
 actualizarContador();
 
 // RSVP
@@ -235,5 +265,6 @@ form.addEventListener('submit', function(e){
     });
 });
 </script>
+
 </body>
 </html>
