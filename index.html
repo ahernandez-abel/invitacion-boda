@@ -111,6 +111,18 @@ button:hover { background:#8c653f; }
   z-index:1000;
 }
 </style>
+
+<!-- MANIFEST Y SERVICE WORKER -->
+<link rel="manifest" href="manifest.json">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('Service Worker registrado', reg))
+      .catch(err => console.error('Service Worker error:', err));
+  });
+}
+</script>
 </head>
 <body>
 

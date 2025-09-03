@@ -3,10 +3,9 @@ self.addEventListener("install", e => {
     caches.open("boda-cache").then(cache => {
       return cache.addAll([
         "index.html",
-        "imagen.jpeg",
+        "imagen/JohanJairony.jpeg",
         "manifest.json",
-        "icon-192.png",
-        "icon-512.png"
+        "icono.png"
       ]);
     })
   );
