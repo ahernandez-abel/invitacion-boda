@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación de Boda</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  color: #000;
+  text-align: center;
+  min-height: 200vh; 
+  background: linear-gradient(to bottom, #f2d7b5 0%, #f2d7b5 100%);
+  overflow-x: hidden;
+}
+
+/* Secciones */
+section, header, footer {
+  background: rgba(255, 248, 231, 0.9);
+  border-radius: 20px;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 50px auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+section.show, header.show, footer.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tipografía */
+header h1 { 
+  font-family:'Great Vibes', cursive; 
+  font-size:3rem;
+  margin:0; 
+}
+
+header p, section p, section h2, section h3, footer, label, button, #contador, #lista-confirmaciones li {
+  font-family:'Great Vibes', cursive;
+}
+
+/* Contador */
+#contador {
+  font-size:1.5rem;
+  font-weight:bold;
+  margin-top:20px;
+  background: rgba(255,255,255,0.4);
+  color: #000;
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Galería */
+.gallery img {
+  width:100%; 
+  border-radius:20px; 
+  box-shadow:0 6px 15px rgba(0,0,0,0.3); 
+  transition: transform 0.4s;
+}
+.gallery img:hover { transform:scale(1.05); }
+
+/* Video responsivo */
+.video-section iframe, section iframe {
+  width:100%;
+  height:250px;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+/* Formulario */
+form {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:400px;
+  margin:auto;
+}
+input, button {
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-family:'Playfair Display', serif;
+}
+button {
+  background:#a67c52;
+  color:#fff;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover { background:#8c653f; }
+
+/* Control de música */
+#music-control {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#fff;
+  border-radius:50%;
+  padding:10px 15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  cursor:pointer;
+  font-size:1.5rem;
+  z-index:1000;
+}
+</style>
+</head>
+<body>
+
+<!-- Fondo -->
+<div id="bg"></div>
+
+<section>
+  <h2>J&J💕</h2>
+  <div class="gallery">
+    <img src="imagen/JohanJairony.jpeg" alt="Foto de Boda">
+  </div>
+  <p style="font-family:'Great Vibes', cursive; font-size:1.5rem;">Siempre Juntos 💍</p>
+</section>
+
+<header class="show">
+  <h1>Johan & Jairony</h1>
+  <p>¡Nos casamos!</p>
+  <p>Con nuestro amor, la bendición de Dios y la compañía de ustedes.</p>
+  <p>Domingo, 14 de Diciembre de 2025 · 3:00 PM</p>
+  <div id="contador">Cargando contador...</div>
+</header>
+
+<section class="video-section">
+  <h2>Un Mensaje Especial</h2>
+  <iframe src="https://www.youtube.com/embed/-E5ovOA9VM8?autoplay=1&mute=1&loop=1&playlist=-E5ovOA9VM8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</section>
+
+<section>
+  <h2>Detalles del Evento</h2>
+  <p>📍 Santo Domingo</p>
+  <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
+</section>
+
+<section>
+  <h2>Confirmar Asistencia</h2>
+  <form id="rsvp-form">
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" id="email" name="email" placeholder="Tu correo" required>
+    <label>¿Asistirás?</label>
+    <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
+    <label><input type="radio" name="asistencia" value="No" required> No</label>
+    <button type="submit">Confirmar</button>
+  </form>
+  <p id="mensaje-confirmacion"></p>
+  <h3>Lista de Confirmados (Sí)</h3>
+  <ul id="lista-confirmaciones"></ul>
+</section>
+
+<section id="contacto">
+  <h3>Contacto de los Novios</h3>
+  <p>📧 Correo: johanyjaironi@email.com</p>
+  <p>📞 Teléfono: +1 809 123 4567</p>
+</section>
+
+<footer>
+  Con cariño, Johan & Jaironi · ¡Te esperamos! 💕
+</footer>
+
+<!-- Música -->
+<audio id="bg-music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/09/07/audio_3a0b5f0c3a.mp3" type="audio/mpeg">
+</audio>
+<div id="music-control">🔇</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+<script>
+// Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAhFsnkt8zgptdJZKXLN0itDoA4CQl6sFk",
+  authDomain: "invitacion-boda-f7da0.firebaseapp.com",
+  projectId: "invitacion-boda-f7da0",
+  storageBucket: "invitacion-boda-f7da0.appspot.com",
+  messagingSenderId: "1048067178112",
+  appId: "1:1048067178112:web:96838a90f9eaddf94cb065",
+  measurementId: "G-7Z4C6N9RFG"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Música
+const music = document.getElementById('bg-music');
+const control = document.getElementById('music-control');
+let playing = false;
+control.addEventListener('click', () => {
+  if(playing){ music.pause(); playing=false; control.textContent='🔇'; }
+  else { music.play(); playing=true; control.textContent='🎵'; }
+});
+
+// Contador
+function actualizarContador() {
+  const evento = new Date("Dec 14, 2025 20:00:00").getTime();
+  const ahora = new Date().getTime();
+  const diff = evento - ahora;
+  if(diff<=0){ document.getElementById("contador").textContent="¡Hoy es el gran día! 💍"; return; }
+  const dias = Math.floor(diff/(1000*60*60*24));
+  const horas = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const min = Math.floor((diff%(1000*60*60))/(1000*60));
+  const sec = Math.floor((diff%(1000*60))/1000);
+  document.getElementById("contador").textContent=`${dias}d ${horas}h ${min}m ${sec}s`;
+}
+setInterval(actualizarContador,1000);
+actualizarContador();
+
+// RSVP
+const form = document.getElementById('rsvp-form');
+const mensaje = document.getElementById('mensaje-confirmacion');
+const lista = document.getElementById('lista-confirmaciones');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+
+  const nuevoRsvp = { nombre, email, asistencia, fecha: new Date().toISOString() };
+  db.ref('rsvp').push(nuevoRsvp)
+    .then(() => {
+      mensaje.textContent = `¡Gracias ${nombre}! Tu respuesta "${asistencia}" ha sido registrada 💖`;
+      mensaje.style.color = "green";
+      form.reset();
+    })
+    .catch(err => {
+      console.error("Error al guardar:", err);
+      mensaje.textContent = "Ocurrió un error 😢";
+      mensaje.style.color = "red";
+    });
+});
+
+// Lista de confirmados
+db.ref('rsvp').orderByChild('asistencia').equalTo('Sí').on('value', snapshot=>{
+  lista.innerHTML="";
+  snapshot.forEach(childSnap=>{
+    const data = childSnap.val();
+    const li = document.createElement("li");
+    li.innerHTML=`<strong>${data.nombre}</strong> (${data.email}) - ${new Date(data.fecha).toLocaleString()}`;
+    lista.appendChild(li);
+  });
+});
+
+// Animación scroll
+const sections = document.querySelectorAll('section, header, footer');
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+</body>
+</html>
