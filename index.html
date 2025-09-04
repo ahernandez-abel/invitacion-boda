@@ -65,13 +65,13 @@ body {
 /* Títulos y textos */
 header h1 {
   font-family: 'Great Vibes', cursive;
-  font-size:3rem;
+  font-size:3.5rem;
   margin-bottom:10px;
 }
 
 header p {
   font-family:'Great Vibes', cursive;
-  font-size:1.5rem;
+  font-size:2rem;
   margin-bottom:10px;
 }
 
@@ -143,10 +143,10 @@ button:hover { background:#8c653f; }
   .count-box span.num{font-size:1.5rem;}
   .count-box span.label{font-size:0.9rem;}
 }
+
 </style>
 </head>
 <body>
-
 <div class="container">
 
   <!-- Foto -->
@@ -156,10 +156,53 @@ button:hover { background:#8c653f; }
 
   <!-- Encabezado -->
   <header class="fade-slide fade-2">
-    <h1>Johan & Jairony</h1>
+    <h1>Jairony & Johan</h1>
     <p>¡Nos casamos!</p>
-    <p>Con nuestro amor, la bendición de Dios y la compañía de ustedes.</p>
-    <p>Domingo, 14 de Diciembre de 2025 · 3:00 PM</p>
+    <br>
+    <p>"Por encima de todo, vistanse de amor, que es el vínculo perfecto".</p>
+    <p>Colosenses 3:14</p>
+    <br>
+<style>
+  .flor {
+    position: absolute;
+    width: 200px;     /* tamaño más grande */
+    z-index: 20;
+    opacity: 0.9;     /* ligera transparencia */
+    pointer-events: none; /* no bloquea clics */
+  }
+
+  .flor.top-left {
+    top: -20px;    /* sube un poco más afuera */
+    left: -135px;   /* mueve hacia afuera */
+  }
+
+  .flor.top-right {
+    top: -20px;
+    right: -135px;
+  }
+
+  .flor.bottom-right {
+    bottom: -60px;
+    right: -70px;
+  }
+
+  .flor.bottom-left {
+    bottom: -230px;
+    left: -120px;
+  }
+</style>
+
+<body>
+  <!-- Flores en esquinas -->
+  <img src="flor1.png" alt="Flor esquina superior izquierda" class="flor top-left">
+  <img src="flor1.png" alt="Flor esquina superior derecha" class="flor top-right">
+  <img src="flor3.png" alt="Flor esquina inferior derecha" class="flor bottom-right">
+  <img src="flor4.png" alt="Flor esquina inferior izquierda" class="flor bottom-left">
+</body>
+
+    <br>
+    <p>Domingo, 14 de Diciembre de 2025</p>
+    <p>3:00 PM</p>
   </header>
 
   <!-- Contador -->
@@ -169,25 +212,77 @@ button:hover { background:#8c653f; }
     <div class="count-box"><span class="num" id="minutos">0</span><span class="label">Minutos</span></div>
     <div class="count-box"><span class="num" id="segundos">0</span><span class="label">Segundos</span></div>
   </div>
-
+<br>
+<br>
+<br>
   <!-- Detalles -->
-  <h2 class="fade-slide fade-4">Detalles del Evento</h2>
-  <p class="fade-slide fade-5">📍 Santo Domingo</p>
+  <h2 class="fade-slide fade-4">Ubicación</h2>
+  <br>
+  <p class="fade-slide fade-5">📍Plaza de la Cultura Juan Pablo Duarte, Av. Pedro Henríquez Ureña, Santo Domingo</p>
+<br>
+ <!-- Mapa del Museo Nacional de Historia y Geografía -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.2525921808015!2d-69.9118467251211!3d18.4722142706502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a46f4b5dc37%3A0xa7d73065df6a3ae8!2sMuseo%20Nacional%20de%20Historia%20y%20Geografia!5e0!3m2!1ses!2sdo!4v1756940688157!5m2!1ses!2sdo" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<br>
+<br>
+<br>
 
-  <!-- Mapa -->
-  <div class="map-container fade-slide fade-6">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.1622!2d-69.9402!3d18.4861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf88b3a46f0f27%3A0x0!2zMTjCsDI5JzMyLjAiTiA2OcKwNTYnMDEuMCJX!5e0!3m2!1ses-419!2sdo!4v1693672537483!5m2!1ses-419!2sdo" 
-      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
+<!-- Sección de Regalos -->
+<section id="regalos" style="position: relative;">
+
+  <h2 style="text-align: center;">Regalos</h2>
+
+  <!-- Imagen que sobresale a la derecha -->
+  <img src="flor1.png" alt="Flores a la derecha" class="img-regalo">
+
+</section>
+
+<style>
+.img-regalo {
+  position: absolute;      /* para sacarla del flujo del texto */
+  top: -50px;                  /* ajusta verticalmente */
+  right: -120px;            /* sobresale hacia la derecha */
+  width: 170px;            /* tamaño de la flor */
+  height: auto;
+  z-index: 10;             /* que quede encima de otros elementos si es necesario */
+  pointer-events: none;    /* para que no interfiera con clics */
+}
+</style>
+<br>
+<br>
+
+  <header class="fade-slide fade-2">
+   <p>Lo más importante es tu presencia, pero si deseas acompañarnos con un aporte para nuestra vida juntos, aquí tienes nuestros datos.</p>
+  </header>
+
+  <!-- Contenedor de las cuentas en columnas -->
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+
+    <!-- Columna 1 -->
+    <div style="flex: 1; min-width: 200px; background: rgba(255,248,231,0.9); padding: 15px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+      <p><strong>BanReservas</strong></p>
+      <p>Cuenta Ahorro: 9605116024</p>
+      <p>Johan M. Uceta</p>
+    </div>
+
+    <!-- Columna 2 -->
+    <div style="flex: 1; min-width: 200px; background: rgba(255,248,231,0.9); padding: 15px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+      <p><strong>Banco Popular</strong></p>
+      <p>Cuenta Corriente: 849769898</p>
+      <p>Jairony E. Hernández</p>
+    </div>
+
   </div>
 
+</section>
+<br>
+<br>
+<br>
   <!-- Formulario RSVP -->
   <section class="fade-slide fade-7">
-    <h2>Confirmar Asistencia</h2>
+    <h2>Confirmar asistencia</h2>
     <form id="rsvp-form">
-      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" id="email" name="email" placeholder="Tu correo" required>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        <input type="text" id="telefono" name="acompanante" placeholder="Teléfono" required>
       <label>¿Asistirás?</label>
       <label><input type="radio" name="asistencia" value="Sí" required> Sí</label>
       <label><input type="radio" name="asistencia" value="No" required> No</label>
@@ -195,15 +290,57 @@ button:hover { background:#8c653f; }
     </form>
     <p id="mensaje-confirmacion"></p>
   </section>
-
+<br>
+<br>
+  <header class="fade-slide fade-2">
+    <p>Con nuestro amor, la bendición de Dios y la compañía de ustedes.</p>
+    <p>¡Los Esperamos!</p>
+    <br>
+    <br>
+</header>
   <!-- Contacto -->
-  <section id="contacto" class="fade-slide fade-7">
-    <h3>Contacto de los Novios</h3>
-    <p>📧 Correo: johanyjaironi@email.com</p>
-    <p>📞 Teléfono: +1 809 123 4567</p>
-  </section>
+<section id="contacto" class="fade-slide fade-7">
+  <h3>Contactos</h3>
 
-</div>
+  <div class="flor-contenedor">
+    <img src="flor5.png" alt="Flor decorativa" class="flor-fondo">
+    <div class="flor-texto">
+      <p>Johan: +1 809-610-9317</p>
+      <p>Jairony: +1 829-827-6338</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.flor-contenedor {
+  position: relative;
+  width: 400px;       /* ajusta al tamaño de tu flor */
+  height: 300px;
+  margin: auto;       /* centrado */
+}
+
+.flor-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flor-texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centra el texto */
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;  /* cambia según combine con tu flor */
+  width: 80%;   /* para que no choque con los bordes */
+}
+</style>
+
+
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
@@ -248,10 +385,10 @@ const mensaje = document.getElementById('mensaje-confirmacion');
 form.addEventListener('submit', function(e){
   e.preventDefault();
   const nombre = document.getElementById('nombre').value;
-  const email = document.getElementById('email').value;
+  const telefono = document.getElementById('telefono').value;
   const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
 
-  const nuevoRsvp = { nombre, email, asistencia, fecha: new Date().toISOString() };
+  const nuevoRsvp = { nombre, telefono, asistencia, fecha: new Date().toISOString() };
   db.ref('rsvp').push(nuevoRsvp)
     .then(() => {
       mensaje.textContent = `¡Gracias ${nombre}! Tu respuesta "${asistencia}" ha sido registrada 💖`;
