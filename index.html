@@ -239,8 +239,8 @@ button:hover { background:#8c653f; }
 <style>
 .img-regalo {
   position: absolute;      /* para sacarla del flujo del texto */
-  top: -55px;                  /* ajusta verticalmente */
-  right: -130px;            /* sobresale hacia la derecha */
+  top: -60px;                  /* ajusta verticalmente */
+  right: -120px;            /* sobresale hacia la derecha */
   width: 170px;            /* tamaño de la flor */
   height: auto;
   z-index: 10;             /* que quede encima de otros elementos si es necesario */
@@ -298,9 +298,10 @@ button:hover { background:#8c653f; }
     <br>
     <br>
 </header>
-  <!-- Contacto -->
+
+ <!-- Contacto -->
 <section id="contacto" class="fade-slide fade-7">
-  <h3>Contactos</h3>
+  <h3 style="text-align: center;">Contactos</h3>
 
   <div class="flor-contenedor">
     <img src="flor5.png" alt="Flor decorativa" class="flor-fondo">
@@ -314,9 +315,10 @@ button:hover { background:#8c653f; }
 <style>
 .flor-contenedor {
   position: relative;
-  width: 400px;       /* ajusta al tamaño de tu flor */
-  height: 200px;
-  margin: auto;       /* centrado */
+  width: 90%;           /* se adapta a la pantalla */
+  max-width: 400px;     /* no crece demasiado en pantallas grandes */
+  aspect-ratio: 2/1;    /* relación de aspecto para la flor */
+  margin: 20px auto;    /* centrado y margen */
 }
 
 .flor-fondo {
@@ -325,21 +327,28 @@ button:hover { background:#8c653f; }
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: contain;   /* mantiene la proporción de la flor */
 }
 
 .flor-texto {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* centra el texto */
+  transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1rem;       /* ajustable según pantalla */
   font-weight: bold;
-  color: #333;  /* cambia según combine con tu flor */
-  width: 80%;   /* para que no choque con los bordes */
+  color: #333;
+  width: 80%;
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 400px) {
+  .flor-texto {
+    font-size: 0.9rem;
+  }
 }
 </style>
-
 
 
 <!-- Firebase -->
