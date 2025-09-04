@@ -298,8 +298,7 @@ button:hover { background:#8c653f; }
     <br>
     <br>
 </header>
-
- <!-- Contacto -->
+<!-- Contacto -->
 <section id="contacto" class="fade-slide fade-7">
   <h3 style="text-align: center;">Contactos</h3>
 
@@ -315,10 +314,9 @@ button:hover { background:#8c653f; }
 <style>
 .flor-contenedor {
   position: relative;
-  width: 90%;           /* se adapta a la pantalla */
-  max-width:700px;     /* no crece demasiado en pantallas grandes */
-  aspect-ratio: 2/1;    /* relación de aspecto para la flor */
-  margin: 20px auto;    /* centrado y margen */
+  display: inline-block;
+  margin: 20px auto;
+  padding: 70px 90px;   /* más espacio para que la flor rodee el texto */
 }
 
 .flor-fondo {
@@ -327,29 +325,21 @@ button:hover { background:#8c653f; }
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* mantiene la proporción de la flor */
+  object-fit: fill;   /* 🔹 la flor se deforma para cubrir todo */
+  z-index: 0;
 }
 
 .flor-texto {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 1;          /* texto arriba de la flor */
   text-align: center;
-  font-size: 1rem;       /* ajustable según pantalla */
+  font-size: 1.2rem;
   font-weight: bold;
   color: #333;
-  width: 80%;
-}
-
-/* Para pantallas muy pequeñas */
-@media (max-width: 400px) {
-  .flor-texto {
-    font-size: 0.9rem;
-  }
+  line-height: 1.4;
+  white-space: nowrap;  /* evita saltos raros */
 }
 </style>
-
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
